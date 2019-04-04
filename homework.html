@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寒假作业</title>
+    <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+    <style>
+    .background{text-align: center;border:2px solid #000000;
+        padding:10px 40px;
+        background:dimgrey;
+        width:20px;
+        border-radius:25px;
+        height: 250px;
+    }
+        .red{text-align: left;border:2px solid #000000;
+       padding: 25px 25px;
+           background: darkred;
+            border-radius: 35px;
+        }
+        .yellow{text-align: left;border:2px solid #000000;
+            padding: 25px 25px;
+            background: darkgoldenrod;
+            border-radius: 35px;}
+        .green{text-align: left;border:2px solid #000000;
+            padding: 25px 25px;
+            background: darkgreen;
+            border-radius: 35px;}
+        .clear{text-align: left;border:2px solid #000000;
+            padding: 25px 25px;
+            background: blue;
+            border-radius: 35px;}
+        .car{
+            position: absolute;
+            left: 200px;
+            top: 60px;
+            background: aqua;
+            width: 40px;
+            height: 40px;
+        }
+        .redLight{background: red}
+        .greenLight{background: green}
+        .yellowLight{background: yellow}
+    </style>
+</head>
+<body>
+    <div class="background" id="background">
+        <div class="red" id="red" style="position:absolute;left:34px;top:37px"></div>
+        <div class="yellow" id="yellow" style="position:absolute;left:34px;top:120px"></div>
+        <div class="green" id="green" style="position:absolute;left:35px;top:200px"></div>
+
+    </div>
+    <div class="clear" id="clear" style="width: 40px;height: 40px"></div>
+    <div class="timeOut" id="timeOut"></div>
+    <div class="timeOutSecond" id="timeOutSecond"></div>
+    <input id="input" type="text">
+    <div class="car" id="car"></div>
+    <script>
+        var second = 0
+        var interval = setInterval(function () {
+            second = second+1
+            $("#timeOut").html(second)
+
+            if (second == 5){
+                $("#red").addClass("redLight").siblings().removeClass("yellowLight").removeClass("greenLight")
+                $("#car").animate({"left":"200px"}).fadeIn()
+            }
+            if(second == 10){
+                $("#yellow").addClass("yellowLight").siblings().removeClass("redLight").removeClass("greenLight")
+            }
+            if (second == 15){
+                $("#green").addClass("greenLight").siblings().removeClass("yellowLight").removeClass("redLight")
+                $("#car").animate({"left":"400px"}, 4000)
+            }
+            if (second == 19){
+                second = 0
+                $("#car").fadeOut()
+            }
+        }, 500)
+
+        var timeOutSecond = 0
+        var timeOut = setTimeout(function () {
+            // timeOutSecond = timeOutSecond+1
+            // $("#timeOut").html(timeOutSecond)
+            // clearInterval(interval)
+            // $("#red").addClass("redLight")
+        }, 3000)
+
+        $("#clear").click(function () {
+            clearInterval(interval)
+        })
+    </script>
+<script>
+    $("#red").click(function () {
+        $("#red").addClass("redLight").siblings().removeClass("yellowLight").removeClass("greenLight")
+    })
+    $("#green").click(function () {
+        $("#green").addClass("greenLight").siblings().removeClass("yellowLight").removeClass("redLight")
+    })
+    $("#yellow").click(function () {
+        $("#yellow").addClass("yellowLight").siblings().removeClass("redLight").removeClass("greenLight")
+    })
+    $("#clear").click(function () {
+        clearTimeout(timeOut)
+        $("#red").removeClass("redLight").siblings().removeClass("yellowLight").removeClass("greenLight")
+    })
+</script>
+<script>
+    // $("#clear").dblclick(function () {
+    //     alert("Are you sure you need doubleClick?")
+    // })
+    // $("#clear").mouseover(function () {
+    //     alert("Are you sure you need on mouse over?")
+    // })
+    // $("#clear").mouseout(function () {
+    //     alert("Are you sure you need mouseout?")
+    // })
+    // $("#input").keyup(function (e) {
+    //     console.log(e)
+    //     alert(e.key)
+    // })
+    // $("#input").blur(function () {
+    //     alert("blurrrrrrrr!")
+    // })
+</script>
+<script>
+    // $("#yellow").css{("background":"green";)}
+</script>
+
+
+</body>
+</html>
